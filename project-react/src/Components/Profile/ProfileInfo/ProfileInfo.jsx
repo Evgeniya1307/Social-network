@@ -1,13 +1,19 @@
 import React from "react";
+import Preloader from "../../../redux/common/Preloader/Preloader";
 import s from "./Profile.module.css"
 
 const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader /> 
+  }
+
     return (
        <div>
            <div>
-           <img src ="https://picfiles.alphacoders.com/246/246686.jpg" alt='flowers' width={1000}/>
+           <img src ="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350"/>
         </div>
         <div className={s.descriptionBlock}>
+          <img src ={props.profile.large}/>
           ava + description
         </div>
         </div>
