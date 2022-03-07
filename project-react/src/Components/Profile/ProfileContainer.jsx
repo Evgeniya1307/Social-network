@@ -40,7 +40,7 @@ class ProfileContainer extends React.Component{
   }
 }
 
-let mapStateToProps = (state) => ({
+let mapStateToProps = (state) => ({ 
     profile: state.profilePage.profile
 });
 
@@ -48,4 +48,4 @@ let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
 export default connect(mapStateToProps, {
     setUserProfile
-}) (WithUrlDataContainerComponent);
+}) (WithUrlDataContainerComponent); 
