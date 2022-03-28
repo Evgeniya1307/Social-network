@@ -29,11 +29,16 @@ class ProfileContainer extends React.Component{
         
     }
     render () {
-   if (!props.isAuth) return <Navigate to="/Login"/>
+
     return(
 <Profile {...this.props}  profile={this.props.profile}/>
     )
   }
+}
+
+let AuthNavigateComponent=(props)=> {
+    if (!props.isAuth) return <Navigate to="/Login"/>
+    return <ProfileContainer{...props}/>
 }
 
 let mapStateToProps = (state) => ({ 
@@ -41,7 +46,7 @@ let mapStateToProps = (state) => ({
     isAuth:state.auth.isAuth
 });
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer);
+let WithUrlDataContainerComponent = withRouter(AuthNavigateComponent);
 
 export default connect(mapStateToProps, 
     {getUserProfile}) (WithUrlDataContainerComponent); 

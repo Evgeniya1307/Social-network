@@ -22,7 +22,11 @@ let mapDispatchToProps = (dispatch) => {
 }
 }
 }
+let AuthNavigateComponent=(props)=> {
+    if (!props.isAuth) return <Navigate to="/Login"/>
+    return <Dialogs{...props}/>
+}
 
-const DialogsContainer = connect (mapStateToProps,mapDispatchToProps) (Dialogs);
+const DialogsContainer = connect (mapStateToProps,mapDispatchToProps) (AuthNavigateComponent);
 
 export default DialogsContainer;
