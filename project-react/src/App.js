@@ -6,7 +6,7 @@ import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./redux/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
-
+import Login from "./Components/login/login";
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
           <Route path="/profile/*" element={<ProfileContainer />}>
         <Route path="/:userId?*" element={<ProfileContainer />} />
 <Route path="/users/*" element={ <UsersContainer/>}/>
-<Route path="/login/*" element={<UsersContainer/>}/>
+<Route path="/Login/*" element={<Login/>}/>
 
             </Route>
             </Routes>
