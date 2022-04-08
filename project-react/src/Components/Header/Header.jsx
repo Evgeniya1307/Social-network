@@ -8,7 +8,7 @@ const Header = (props) => {
     <img src='https://static.vecteezy.com/system/resources/thumbnails/002/280/804/small/lavender-flower-logo-symbol-template-free-vector.jpg' alt='flowers'/>
     <div className={s.loginBlock}>
         {props.isAuth ? props.login
-        : <Link to="/login">Login</Link>}
+        : <Link to="login">Login</Link>}
     </div>
     </header>
     )

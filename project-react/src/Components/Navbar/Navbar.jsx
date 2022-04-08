@@ -6,21 +6,21 @@ const Navbar = () => {
     return (
     <nav className={s.nav}>
         <div className={s.item}>
-        <Link to ="/profile">Profile</Link>
+        <Link to ="profile">Profile</Link>
     </div>
     <div className={s.item}>
-    <Link to ="/dialogs">Message</Link> 
+    <Link to ="dialogs">Message</Link> 
     </div>
     <div className={s.item}>
-    <Link to="/news">News</Link>
+    <Link to="news">News</Link>
     </div>
     <div className={s.item}>
-    <Link to="/music">Music</Link>
+    <Link to="music">Music</Link>
     </div>
       <div className={s.item}>
-      <Link to="/seting">Seting</Link>
+      <Link to="seting">Seting</Link>
       <div className={s.item}>
-        <Link to="/users">Users</Link>
+        <Link to="users">Users</Link>
         </div>
     </div>
     </nav>
