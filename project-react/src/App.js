@@ -16,11 +16,10 @@ const App = () => {
       <div className="app-wrapper-content">
          <Routes>
           <Route  path="/dialogs/*" element={ <DialogsContainer />} />
-          <Route path="/profile/*" element={<ProfileContainer />}>
-        <Route path="/:userId?*" element={<ProfileContainer />} />
+          <Route path="/" element={<ProfileContainer />}>
+        <Route path="/" element={<ProfileContainer />} />
 <Route path="/users/*" element={ <UsersContainer/>}/>
 <Route path="/Login/*" element={<Login/>}/>
-
             </Route>
             </Routes>
         
