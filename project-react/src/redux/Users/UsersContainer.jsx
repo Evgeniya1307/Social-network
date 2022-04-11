@@ -64,9 +64,8 @@ return {
 //         }
 //     }
 
-let witRedirect= withAuthRedirect(witRedirect)
+let witRedirect= withAuthRedirect(UsersContainer)
 
-export default connect (mapStateToProps, {
-follow,unfollow,
-setCurrentPage,
- toggleFollowingProgress, getUsers})(UsersContainer);
+export default connect (mapStateToProps,
+     {follow,unfollow,setCurrentPage,
+ toggleFollowingProgress, getUsers})(witRedirect);
