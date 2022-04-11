@@ -64,7 +64,7 @@ return {
 //         }
 //     }
 
-
+let witRedirect= withAuthRedirect(witRedirect)
 
 export default connect (mapStateToProps, {
 follow,unfollow,
