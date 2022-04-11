@@ -2,8 +2,7 @@ import React from "react";
 import {sendMessageCreator, updateNewMessageBodyCreator } from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
-import {Navigate} from "react-router-dom"
-import { withAuthNavigate } from "../Profile/hoc/withAuthNavigate";
+import withAuthRedirect, { withAuthNavigate } from "../Profile/hoc/withAuthRedirect";
 import { compose } from "redux";
 
 
@@ -28,6 +27,6 @@ let mapDispatchToProps = (dispatch) => {
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps), 
-    withAuthNavigate
+    withAuthRedirect
  ) (Dialogs); //смысл commpose возьми диалогс закинь в эту функцию withAuthRedirect, потом получи результат и этот результат    connect(mapStateToProps, mapDispatchToProps)
 

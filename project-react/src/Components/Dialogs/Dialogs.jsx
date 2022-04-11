@@ -7,7 +7,8 @@ import {Redirect} from "react-router-dom";
 
 
 const Dialogs = (props) => {
-let state =props.dialogsPage;
+
+  let state =props.dialogsPage;
 
 let dialogsElements =state.dialogs.map(d => <DialogItem name={d.name}key={d.id} id={d.id} />);
 let messagesElements =state.messages.map(m => <Message message ={m.message}key={m.id}/>);
@@ -21,7 +22,7 @@ props.sendMessage();
     let body = e.target.value;
     props.updateNewMessageBody(body);
   }
-  if (!props.isAuth) return <Redirect to={"/login"} /> ;
+  if (!props.isAuth) return <Redirect to="/login" /> ;
 
 
   return (
