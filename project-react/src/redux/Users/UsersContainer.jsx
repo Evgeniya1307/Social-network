@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { follow, setCurrentPage,unfollow,toggleFollowingProgress, getUsers} from "../users-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import Users from "./Users";
+import withAuthNavigate from "../../Components/Profile/hoc/withAuthNavigate";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
 this.props.getUsers(this.props.currentPage,this.props.pageSize);
         }
+        
         onPageChanged = (pageNumber) => {
             this.props.getUsers(pageNumber,this.props.pageSize)
         }
@@ -35,7 +37,7 @@ return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state .usersPage.currentPage,
+    currentPage: state.usersPage.currentPage,
     isFetching:state.usersPage.isFetching,
     followingInProgress:state.usersPage.followingInProgress
 }
@@ -64,8 +66,8 @@ return {
 //         }
 //     }
 
-let witRedirect= withAuthRedirect(UsersContainer)
+let withNavigate= withAuthNavigate(UsersContainer)
 
 export default connect (mapStateToProps,
      {follow,unfollow,setCurrentPage,
- toggleFollowingProgress, getUsers})(witRedirect);
+ toggleFollowingProgress, getUsers})(withNavigate);

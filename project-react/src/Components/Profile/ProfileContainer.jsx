@@ -1,25 +1,23 @@
 import React from "react";
 import Profile from "./Profile";
-import {getUserProfile} from "../../redux/profile-reducer";
+import {getUserProfile,} from "../../redux/profile-reducer";
 import {connect} from 'react-redux';
-import {Navigate, useParams} from "react-router-dom";
-import {withRoyter} from "react-router-dom"
-import { withAuthNavigate } from "./hoc/withAuthNavigate";
+import {Navigate, useMatch} from "react-router-dom";
 import { compose } from "redux";
+import {withRouter,} from "react-router-dom";
 
 
 
-const withRouter = WrappedComponent => props => {
-    const params = useParams();
-    // etc... other react-router-dom v6 hooks
-    return (
-        <WrappedComponent
-            {...props}
-            params={params}
-            // etc...
-        />
-    );
+export const withRouter = (Component) =>{
+    let RouterComponent = (props) => {
+            const match = useMatch('/profile/:userId/');
+            return <Component {...props} match={match}/>;
+    }
+    return RouterComponent;
 };
+
+
+
 
 class ProfileContainer extends React.Component{
     componentDidMount() {
@@ -45,11 +43,12 @@ if (!this.props.isAuth) return <Navigate to={"/login"}/>
 export default compose(
     connect(mapStateToProps, {getUserProfile}),
     withRouter,
-    withAuthNavigate
 )(ProfileContainer);
 
 
-let mapStateToProps = (state) => ({ 
+let mapStateToProps = (state) => { 
+   return({
     profile: state.profilePage.profile,
-});
+   })
+} 
  

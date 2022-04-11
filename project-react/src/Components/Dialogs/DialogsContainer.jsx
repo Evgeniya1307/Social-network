@@ -28,6 +28,6 @@ let mapDispatchToProps = (dispatch) => {
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps), 
-    withAuthRedirect
+    withAuthNavigate
  ) (Dialogs); //смысл commpose возьми диалогс закинь в эту функцию withAuthRedirect, потом получи результат и этот результат    connect(mapStateToProps, mapDispatchToProps)
 

@@ -8,6 +8,7 @@ let mapStateToPropsForNavigate=(state) => ({
 });
 
 
+
 export const withAuthNavigate = (Component)=>{
    
     class NavigateComponent extends React.Component{
