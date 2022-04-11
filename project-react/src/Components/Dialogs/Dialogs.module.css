@@ -1,22 +1,58 @@
-.dialogs {
-display: grid;
-grid-template-columns: 2fr 10fr;
+.users-dialogs {
+    background-color: white;
 }
 
-.dialogsItems{
-    padding: 10px;
-    color: bisque;
+
+.users-dialogs__img, .users-dialogs__img img {
+    width: 38px;
+    height: 38px;
+    font-size: 30px;
+    color: #007BFF;
+}
+
+
+.users-dialogs-wrap {
+    display: block;
+    text-decoration: none !important;
+}
+
+.users-dialogs-wrap:hover {
+    background-color: #66b0ff;
+    color: white;
 
 }
 
-.dialogsItems.active{
-    color: bisque;
+.active .users-dialogs-inner {
+    background-color: #007BFF;
 }
 
-.messages {
-padding: 10px;
+.user-messages-wrap {
+    min-height: 500px;
+    background-color: white;
 }
 
-.messages.message{
-    color: bisque;
+.user-messages {
+    height: 350px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.users-dialogs__text {
+    background-color: #66b0ff;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.users-dialogs__text_user {
+    background-color: #007BFF;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.users-dialogs_small {
+    height: 162px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
