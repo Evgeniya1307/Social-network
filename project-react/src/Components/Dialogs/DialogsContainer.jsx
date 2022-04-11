@@ -4,6 +4,7 @@ import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 import {Navigate} from "react-router-dom"
 import { withAuthNavigate } from "../Profile/hoc/withAuthNavigate";
+import { compose } from "redux";
 
 
 
@@ -25,9 +26,8 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 
-let AuthNavigateComponent= withAuthNavigate(Dialogs);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps), 
+    withAuthRedirect
+ ) (Dialogs); //смысл commpose возьми диалогс закинь в эту функцию withAuthRedirect, потом получи результат и этот результат    connect(mapStateToProps, mapDispatchToProps)
 
-
-const DialogsContainer = connect (mapStateToProps,mapDispatchToProps) (AuthNavigateComponent);
-
-export default DialogsContainer;
