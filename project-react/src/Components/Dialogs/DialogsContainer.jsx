@@ -1,23 +1,30 @@
-import React from 'react'
-import {Dialogs} from "./Dialogs";
-import {withAuthNavigate} from '../Profile/hoc/withAuthNavigate';
-import { compose } from 'redux'
-import { sendMessageBodyAC } from "../../Redux/Dialogs-reducer";
-import { useDispatch, useSelector } from "react-redux";
+import { onSendMessageCreater, onToggleIsFetching } from '../../Redux/dialogs-reducer';
+import Dialogs from './Dialogs';
+import { connect } from 'react-redux';
+import { withAuthRedirect } from '../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 
-function DialogsContainer() {
-  const dispatch = useDispatch();
-  const isAuthLogin = useSelector(
-    (state) => state.authReducer
-  );
 
-  const addChatContainer = (newMessageBody) => {
-    dispatch(sendMessageBodyAC(newMessageBody));
-  };
-  return (
-    <Dialogs isAuth={isAuthLogin.isAuth} addChatContainer={addChatContainer} />
-  );
+const mapStateToProps = (state) => {
+  return {
+    messagesPage: state.messagesPage
+  }
 }
 
-export default compose(withAuthNavigate)(DialogsContainer) ;// смысл commpose возьми диалогс закинь в эту функцию withAuthNavigate, потом получи результат и этот результат    connect(mapStateToProps, mapDispatchToProps)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sendMessage: (newMessageBody) => {
+      dispatch(onSendMessageCreater(newMessageBody));
+    },
+    toggleIsFetching: (isFetching) => {
+      dispatch(onToggleIsFetching(isFetching));
+    }
+  }
+}
+
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect
+)(Dialogs)

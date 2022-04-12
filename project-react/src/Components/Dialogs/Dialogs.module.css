@@ -1,58 +1,31 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    padding: 10px;
-
-}
-
-.dialogItems {
-    padding: 10px;
-    color: rgb(87, 192, 17);
-
+    padding: 20px;
 }
 
 .messages {
-    padding: 10px;
-    color: rgb(151, 14, 37);
-
-}
-
-.message {
-    padding: 10px;
-    color: rgb(151, 14, 37);
-
-}
-
-.s active {
-    color: rgb(151, 14, 37);
-}
-
-.img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.button {
-    background-color: deepskyblue; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 50px;
+    width: 500px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    word-wrap: break-word;
 }
 
-.inputStyle {
-    width: 50%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 1px solid #555;
-    outline: none;
+.messages .item {
+    text-align: center;
+    margin-top: 100px;
 }
-
-.inputStyle:focus {
-    background-color: lightblue;
+.messages textarea {
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.messages button {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
 }
