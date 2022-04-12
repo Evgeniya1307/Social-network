@@ -1,58 +1,55 @@
-import React from 'react'
-import s from './MyPosts.module.css'
-import { Field, reduxForm } from 'redux-form'
-import { maxLengthCreator, required } from "../../utilsvalidators/validators";
-import { Textarea } from "../../common/Preloader/FormsControl/FormsControls";
-import { Button } from "@mui/material";
-import { useSelector } from "react-redux";
+import React from 'react';
+import Post from './Post/Post';
+import { Field, reduxForm } from 'redux-form';
+import {requiredField, maxLengthCreater} from '../../utils/validators//validators';
+import { Textarea } from '../../common/FormsControls/FormsControls';
 
-export const maxLength10 = maxLengthCreator(10);
+import s from './MyPosts.module.css';
 
-export const MyPosts = (props) => {
-  const profilePage = useSelector(
-      (state) => state.profileReducer
-  );
+ 
+let maxLength30 = maxLengthCreater(30);
 
-  let postsElement = profilePage.MyPostsData.map((m) => (
-    <Posts message={m.message} LikesCount={m.LikesCount} />
-));
+class MyPosts extends React.Component {
+    
+    addNewPost = (values) => {
+        this.props.addPost(values.newPostBody); 
+    }
+ 
 
-const addPost = (inputData) => {
-  props.addPost(inputData.myPosts);
-};
+    render() {
+        let postsElements = this.props.posts.map(post => <Post photo={this.props.profile.photos} message={post.message} likes={post.likes} key={post.id}/> );
 
-return (
-  <div className={s.posts}>
-      <div>{postsElement}</div>
-      <AddPostFormRedux onSubmit={addPost} />
-  </div>
-);
-};
-
-export const MyPostsForm = (props) => {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
-      <div>
-      <Field
-                        className={s.inputStyle}
-                        component={Textarea}
-                        name="myPosts"
-                        placeholder="Enter your message"
-                        validate={[required, maxLength10]}
-                    />
+        return (
+            <div>
+                <div className={s.postsBlock}>
+                <h3>New Post</h3>
+                <div className={s.item}>
+                    <AddPostFormRedux onSubmit={this.addNewPost} />
                 </div>
-                <div>
-                    <Button>Add post</Button>
+                </div>
+                <div className={s.posts}>
+                    {postsElements}
                 </div>
             </div>
-        </form>
-  );
+    )
+    }
 
-
-  const AddPostFormRedux = reduxForm<AddPostFormType>({
-    form: "addPostForm",
-})(MypostsForm)
 }
+
+const AddPostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field component={Textarea} name='newPostBody' placeholder='Whats on your mind?' validate={[requiredField, maxLength30]} />
+            </div>
+            <div>
+                <button> Add post </button>
+            </div>
+        </form>
+    )
+}
+
+
+const AddPostFormRedux = reduxForm({form: 'profielAddPostForm'})(AddPostForm)
 
 export default MyPosts;

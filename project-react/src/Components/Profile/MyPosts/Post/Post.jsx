@@ -1,19 +1,24 @@
-import React from 'react'
-import s from './Post.module.css'
+import React from 'react';
+import userPhoto from '../../../../assets/images/user.png';
 
-export const Post = (props) => {
-  return (
-    <div className={s.item}>
-      <img
-        src="https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg"
-        alt="userPicture"
-      />
+import s from './Post.module.css';
 
-      {props.message}
+const Post = (props) => {
+    return (
+            <div className={s.item}>
+                <span>
+                    <img alt='avatar' src={props.photo.small != null? props.photo.small: userPhoto}></img>
+                </span>
+                <span className={s.itemDescr}>
+                    <p className={s.word}>{props.message}</p>
+                    <div>
+                    {props.likes}
+                        <span> / </span>
+                        <span>Like</span>
+                    </div>
+                </span>
+            </div>
+    )
+}
 
-      <div>{props.LikesCount}</div>
-    </div>
-  );
-};
-
-export default Post
+export default Post;

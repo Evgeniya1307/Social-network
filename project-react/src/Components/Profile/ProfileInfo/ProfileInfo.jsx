@@ -1,42 +1,27 @@
 import React from 'react';
-import s from "./ProfileInfo.module.css";
-import ProfileStatus from "./ProfileStatus";
-import Preloader from '../../../redux/common/Preloader/Preloader';
-import ProfileStatusWithHooks from "./ProfileStatuswirhHooks";
+import ProfileStatus from './ProfileStatus';
+import userPhoto from '../../../assets/images/user.png';
 
+import s from './ProfileInfo.module.css';
 
-export function ProfileInfo(props) {
-  if (!props.profile) {
-      return <Preloader/>;
-  }
-
-  return (
-    <div className={s.ProfileStyle}>
-        <div className={s.ProfileInfo}></div>
+const ProfileInfo = (props) => {
+    
+    return (
         <div>
-            <img
-                className={s.img}
-                src={props.profile.photos.small}
-                alt="ProfileFoto"
-            />
-            <ul>
-                <h2>Contacts</h2>
-                <li>
-                    <span>{props.profile.contacts.github}</span>
-                </li>
-                <li>
-                    <span>{props.profile.contacts.facebook}</span>
-                </li>
-                <li>
-                    <span>{props.profile.contacts.instagram}</span>
-                </li>
-                <ProfileStatusWithHooks
-                        updateStatus={props.updateStatus}
-                        status={props.status}
-                    />
-            </ul>
+            <div className={s.descriptionBlock}>
+                <div>
+                    <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto} alt="#"/>
+                </div>
+                <div>
+                    <h1>{props.profile.fullName}</h1> 
+                </div>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                
+                {/* <p>country: Kazakhstan <br/>
+                age: 24 <br/></p> */}
+            </div>
         </div>
-    </div>
-);
+    )
 }
+
 export default ProfileInfo;

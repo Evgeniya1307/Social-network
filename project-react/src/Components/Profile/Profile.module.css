@@ -1,11 +1,12 @@
-.descriptionBlock {
-    padding: 10px;
+.content {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    margin: 20px 0;
 }
-
-.mainPhoto {
-    max-width: 200px;
+.content img {
+    border-radius: 5px;
 }
-
-.contact {
-    padding-left: 10px;
+.firstColumn {
+    margin: 0 auto;
+    text-align: center;
 }
