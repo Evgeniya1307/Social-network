@@ -1,16 +1,20 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import s from "../Dialogs.module.css";
-import { Avatar } from "@mui/material";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+import s from './../DialogItem/DialogsItem.module.css';
 
 
-export const DialogsItems = (props) => {
-  let path = '/dialogs/' + props.id;
-  const avatar = <Avatar alt="Remy Sharp" className={s.img} src={"https://themified.com/friend-finder/images/users/user-7.jpg"} />
+
+
+const DialogItem = ({ name, id, avatar }) => {
+  let path = '/dialogs/' + id;
   return (
-      <div className={s.dialog + '' + s.active}>
-          <textarea>------</textarea>
-          <NavLink to={path}>{avatar}{props.name}</NavLink>
-      </div>
+    <div className={s.dialogItem}>
+      <img src={avatar} alt=""/>
+      <NavLink className={usersData => usersData.isActive ? s.active : s.item} to={path}>{name}</NavLink>
+    </div>
   )
-}
+};
+
+
+export default DialogItem;

@@ -1,44 +1,53 @@
-import {AddmessageForm} from "../Components/Dialogs/Dialogs"
+const SEND_MESSAGE = 'SEND-MESSAGE';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
-export type DialogsType = typeof initialState
-export const initialState = {
-    DialogsData: [
-        { id: 1, name: 'Pall' },
-        { id: 2, name: 'Artur' },
-        { id: 3, name: 'Valeri' },
-        { id: 4, name: 'Nikol' },
-        { id: 5, name: 'Bond' },
-        { id: 6, name: 'Petrovich' },
+let initialState = {
+
+    dialogs: [
+        { name: 'Dmitriy', avatar: "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/breaking_bad_chemisrty_avatar_heisenberg-512.png", id:'1' },
+        { name: 'Alex', avatar:'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/old_man_male_portrait-512.png',  id:'2' },
+        { name: 'Artyom', avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/bear_russian_animal_avatar-512.png', id:'3'},
+        { name: 'Katerina', avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/suicide_squad_woman_avatar_joker-512.png', id:'4' },
+        { name: 'Ibragim', avatar:'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png', id:'5' },
+        { name: 'Anna', avatar:'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/marilyn_monroe_artist_avatar-512.png', id:'6' }
     ],
-    MessagesData: [
-        { id: 1, message: 'hello' },
-        { id: 2, message: 'How are you' },
-        { id: 3, message: 'Yo' },
+    messages: [
+        {message: 'Hi' , id:'1'},
+        {message: 'Hi' , id:'2'}, 
+        {message: 'How are you?' , id:'3'},
+        {message: 'Nice, what about you? :)' , id:'4'},
+        {message: 'Not bad', id:'5'},
+        {message: 'Okay, bye', id:'6'}
     ],
-};
+    isFetching: null
+}
 
 
-export const dialogsReducer = (state: DialogsType = initialState, action: ActionTypes): typeof initialState => {
-    switch (action.type) {
-        case "SEND_MESSAGE_BODY":
-            let body = action.newMessageBody
+const dialogsReducer = (state = initialState, action) => {
+    let stateCopy;
+
+    switch(action.type){
+
+        case SEND_MESSAGE:
+            let body = action.newMessageBody;
+            stateCopy = {
+                ...state,
+                messages: [...state.messages, {id: '7', message: body} ]
+            };
+            return stateCopy;
+        case TOGGLE_IS_FETCHING:
             return {
                 ...state,
-                MessagesData: [...state.MessagesData, { id: 6, message: body }]
-            };
+                isFetching: action.isFetching
+            }
         default:
             return state;
     }
 }
-export const sendMessageBodyAC = (newMessageBody: string) => {
-    return {
-        type: "SEND_MESSAGE_BODY",
-        newMessageBody: newMessageBody
 
-    } as const
-}
-
-type SendMessageBodyCreatorActionCreatorType = ReturnType<typeof sendMessageBodyAC>
-
-
-type ActionTypes = SendMessageBodyCreatorActionCreatorType
+export const onToggleIsFetching = (isFetching) => (
+    {type: TOGGLE_IS_FETCHING,
+    isFetching: isFetching}
+    )
+export const  onSendMessageCreater = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody});
+export default dialogsReducer;

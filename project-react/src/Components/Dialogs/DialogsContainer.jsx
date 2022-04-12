@@ -1,8 +1,8 @@
 import React from 'react'
-import {Dialogs} from "../Dialogs";
+import {Dialogs} from "./Dialogs";
 import {withAuthNavigate} from '../Profile/hoc/withAuthNavigate';
 import { compose } from 'redux'
-import { sendMessageBodyAC } from "../../../Redux/Dialogs-reducer";
+import { sendMessageBodyAC } from "../../Redux/Dialogs-reducer";
 import { useDispatch, useSelector } from "react-redux";
 
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './MyPosts.module.css'
 import { Field, reduxForm } from 'redux-form'
-import { maxLengthCreator, required } from "../../Dialogs/utils/validators";
+import { maxLengthCreator, required } from "../../utilsvalidators/validators";
 import { Textarea } from "../../common/Preloader/FormsControl/FormsControls";
 import { Button } from "@mui/material";
 import { useSelector } from "react-redux";
