@@ -1,30 +1,52 @@
-.usersFoto {
-    padding: 12px;
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.wrapper {
+    padding: 20px;
+}
+.userPhoto {
+    width: 100px;
+    height: 100px;
+}
+.userWrapper {
+    display: flex;
+    margin-bottom: 20px;
+}
+.userWrapper span{
+    cursor: pointer;
 }
 
-.selectedPageFat {
-    font-size: 12pt;
-    padding: 3px;
-
-}
-
-.selectedPageThin {
-    border-radius: 46%;
-    width: 46px;
-    height: 46px;
-    padding: 1px;
-
-    background: #fff;
-    border: 2px solid #666;
-    color: #666;
+.pages {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    width: 150px;
+    margin: 0 auto;
+    background-color: white;
     text-align: center;
-    font-size: 12pt;
+    margin-top: 10px;
+}
+.pages span{
+    padding: 2px;
+}
+
+.userDescription {
+    margin: 10px;
+}
+.userName {
+    text-align: center;
+    font-size: 18px;
     font-weight: bold;
-
-    /*font: 12px -apple-system sans-serif;*/
-
+}
+.userCountry {
+    font-style: oblique;
+    color: gray;
+}
+.followBtn {
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.selectedPage{
+    font-weight: bold;
+    font-size: 18px;
 }
