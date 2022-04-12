@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { follow, setCurrentPage,unfollow,toggleFollowingProgress, getUsers} from "../users-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import Users from "./Users";
-import withAuthRedirect from "../../Components/Profile/hoc/withAuthRedirect";
+import withAuthNavigate from "../../Components/Profile/hoc/withAuthNavigate";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
