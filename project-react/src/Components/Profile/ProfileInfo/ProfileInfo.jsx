@@ -2,7 +2,7 @@ import React from 'react';
 import s from "./ProfileInfo.module.css";
 import ProfileStatus from "./ProfileStatus";
 import Preloader from '../../../redux/common/Preloader/Preloader';
-
+import ProfileStatusWithHooks from "./ProfileStatuswirhHooks";
 
 
 export function ProfileInfo(props) {
@@ -30,10 +30,10 @@ export function ProfileInfo(props) {
                 <li>
                     <span>{props.profile.contacts.instagram}</span>
                 </li>
-                <ProfileStatus
-                    updateStatus={props.updateStatus}
-                    status={props.status}
-                />
+                <ProfileStatusWithHooks
+                        updateStatus={props.updateStatus}
+                        status={props.status}
+                    />
             </ul>
         </div>
     </div>

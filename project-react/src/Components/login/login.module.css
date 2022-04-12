@@ -1,18 +1,9 @@
-.login-form {
-    width: 290px;
-    position: absolute;
-    padding: 15px;
-    background-color: white;
-    left: 50%;
-    margin-left: -145px;
-}
-
-.login-logo {
-    max-width: 50px;
-}
-
-.login-test {
-    color: #007BFF;
-    text-decoration: underline;
-    cursor: pointer;
+.input{
+    /* font-size: 16px;
+    font-size: max(16px, 1em);
+    font-family: inherit;
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+    border: 1px solid ;
+    border-radius: 4px; */
 }

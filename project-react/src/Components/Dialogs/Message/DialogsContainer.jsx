@@ -1,10 +1,9 @@
 import React from 'react'
-import Dialogs from './Dialogs'
-import withAuthNavigate from '../Profile/hoc/withAuthNavigate'
+import {Dialogs} from "../Dialogs";
+import {withAuthNavigate} from '../Profile/hoc/withAuthNavigate';
 import { compose } from 'redux'
-import DialogsContainer from '../DialogsContainer'
 import { sendMessageBodyAC } from "../../../Redux/Dialogs-reducer";
-
+import { useDispatch, useSelector } from "react-redux";
 
 
 function DialogsContainer() {
@@ -21,6 +20,4 @@ function DialogsContainer() {
   );
 }
 
-export default compose(
-  withAuthNavigate
-)(DialogsContainer) ;// смысл commpose возьми диалогс закинь в эту функцию withAuthNavigate, потом получи результат и этот результат    connect(mapStateToProps, mapDispatchToProps)
+export default compose(withAuthNavigate)(DialogsContainer) ;// смысл commpose возьми диалогс закинь в эту функцию withAuthNavigate, потом получи результат и этот результат    connect(mapStateToProps, mapDispatchToProps)

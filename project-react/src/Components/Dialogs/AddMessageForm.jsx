@@ -1,12 +1,12 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Textarea } from "../common/Preloader/FormsControl/FormsControls";
-import { maxLengthCreator, required } from '../../../utils/validators/validators'
+import { maxLengthCreator, required } from "../../Components/Dialogs/utils/validators"
 import s from "./Dialogs.module.css";
 
 
 
-const maxlength50 = maxLengthCreator(50)
+const maxlenght50  = maxLengthCreator(50);
 
 const AddMessageForm = (props) => {
   return (

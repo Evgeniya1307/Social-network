@@ -1,7 +1,15 @@
-const initialState = {}
-
-const sidebarReducer = (state = initialState, action) => {
-  return state
+export const SideBar=(state=initialState)=>{
+  return state;
 }
 
-export default sidebarReducer
+
+let initialState = {
+  SideBar: [
+      { id: 1, name: "Andru" },
+      { id: 2, name: "Sasha" },
+      { id: 3, name: "Sveta" },
+  ]
+
+}
+
+

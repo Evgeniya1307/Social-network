@@ -1,24 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import s from "../Dialogs.module.css";
+import { Avatar } from "@mui/material";
 
-const DialogItem = (props) => {
-  const path = '/dialogs/' + props.id
 
+export const DialogsItems = (props) => {
+  let path = '/dialogs/' + props.id;
+  const avatar = <Avatar alt="Remy Sharp" className={s.img} src={"https://themified.com/friend-finder/images/users/user-7.jpg"} />
   return (
-    <NavLink className='users-dialogs-wrap' to={path}>
-      <div className='users-dialogs-inner col-12 d-flex align-items-center pt-2 pb-2'>
-        <div className='users-dialogs__img mr-3'>
-          <img
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ARWKCdw-3CQxQ5nQdTZRJxF2v6SLpWtGPg&usqp=CAU'
-            alert=''
-          />
-        </div>
-        <div>
-          {props.name}
-        </div>
+      <div className={s.dialog + '' + s.active}>
+          <textarea>------</textarea>
+          <NavLink to={path}>{avatar}{props.name}</NavLink>
       </div>
-    </NavLink>
   )
 }
-
-export default DialogItem

@@ -4,6 +4,8 @@ import Message from "./Message/Message";
 import {NavLink, Navigate } from "react-router-dom";
 import { AddmessageFormRedux } from "./AddMessageForm";
 import { useSelector } from "react-redux";
+import { DialogsType } from  "../../redux/dialogs-reducer";
+
 
 const DialogsItems = (props) => {
   let path = "/dialogs/" + props.id;
@@ -15,11 +17,10 @@ const DialogsItems = (props) => {
 };
 
 
-export const Dialogs = (props) => {
-  const dialogsMessage = useSelector(
+export const Dialogs = (props: dialogsType) => {
+  const dialogsMessage = useSelector<AppRootStateType, DialogsType>(
     (state) => state.dialogsReducer
   );
-
 
   let DialogsElements = dialogsMessage.DialogsData.map((d) => (
     <DialogsItems name={d.name} id={d.id} />

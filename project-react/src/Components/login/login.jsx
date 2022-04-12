@@ -1,77 +1,71 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
-import { createField, Input } from '../common/FormsControls/FormsControls';
-import { required } from '../../utils/validators/validators';
+import { reduxForm,Field } from 'redux-form';
+import { Input } from "./../common/Preloader/FormsControl/FormsControls";
+import { required } from "../../Components/Dialogs/utils/validators";
 import { connect } from 'react-redux';
-import { login } from '../../redux/auth-reducer';
-import { Navigate } from "react-router-dom";
-import style from './../common/FormsControls/FormsControls.module.css';
-import './Login.module.css';
+import { Login } from '../../redux/auth-reducer';
+import style from "./../common/Preloader/FormsControl/FormsControls.module.css";
+import { Navigate } from 'react-router-dom';
 
-const LoginForm = ({ handleSubmit, error, onTest, captchaUrl }) => {
+export let LoginForm = (props) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <div className='pb-3'>
-        {createField('Email', 'email', [required], Input,
-          { bootstrap: 'form-control' })}
-      </div>
-      <div className='pb-3'>
-        {createField('Пароль', 'password', [required], Input,
-          { type: 'password', bootstrap: 'form-control' })}
-      </div>
-      <div className='d-flex justify-content-center pb-4'>
-        <div>
-          {createField(null, 'rememberMe', [], Input,
-            { type: 'checkbox', bootstrap: 'form-check-input' })}
-        </div>
-        <div>Запомнить меня?</div>
-      </div>
+    <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field
+                    validate={[required]}
+                    className={s.input}
+                    placeholder={"Email"}
+                    name={"email"}
+                    component={Input}
+                />
+            </div>
+            <div>
+            <Field
+                    validate={[required]}
+                    className={s.input}
+                    placeholder={"Password"}
+                    name={"password"}
+                    component={Input}
+                    type={"password"}
+                />
+            </div>
+            <div>
+                <Field className={s.input} component={Input} name={"rememberMe"}
+                       type={"checkbox"}/>{" "} Remember me
+            </div>
+            {props.error && <div className={style.formSummaryError}>{props.error}</div>}
+            <div>
+                <button>Login</button>
+            </div>
+        </form>
+    );
+};
 
-      {captchaUrl && <img src={captchaUrl} />}
-      {captchaUrl && createField('Symbols from image', 'captcha', [required], Input, {})}
+const LoginReduxForm = (LoginForm)=>{
 
-      {error && <div className={style.formSummaryError}>
-        {error}
-                </div>}
-      <div>
-        <button className='btn btn-success'>Войти</button>
-      </div>
-
-      <div className='pt-4'>
-        <p onClick={onTest} className='login-test'>Войти в роли тестера</p>
-      </div>
-    </form>
-  )
-}
-
-const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
+  (email, password, rememberMe)
+    isAuth
+};
 
 const Login = (props) => {
-  const onSubmit = (formData) => {
-    props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
-  }
+    const onSubmit = (formData) => {
+        props.login(formData.email, formData.password, formData.rememberMe);
+    };
+    if (props.isAuth) {
+        return <Navigate to='/Profile'/>
+    }
+    return (
+        <div>
+            <h1> Login</h1>
+            <LoginReduxForm onSubmit={onSubmit}/>
+        </div>
+    );
+};
 
-  const onTest = () => {
-    props.login('yivat41432@gilfun.com', '1234567890')
-  }
-
-  if (props.isAuth) {
-    return <Redirect to='/profile' />
-  }
-
-  return (
-    <div className='login-form mt-5 text-center'>
-      <div className='pt-2 pb-2'>
-        <img className='login-logo' src='RD-logo-mini.png' alt='logo' />
-      </div>
-      <h1 className='pb-3'>Авторизация</h1>
-      <LoginReduxForm onSubmit={onSubmit} onTest={onTest} captchaUrl={props.captchaUrl} />
-    </div>
-  )
+const mapStateTpProps = (state)=> {
+    return {
+        isAuth: state.authReducer.isAuth
+    }
 }
-const mapStateToProps = (state) => ({
-  captchaUrl: state.auth.captchaUrl,
-  isAuth: state.auth.isAuth
-})
 
-export default connect(mapStateToProps, { login })(Login)
+export default connect(mapStateTpProps, {login: Login})(Login);

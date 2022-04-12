@@ -1,20 +1,10 @@
 import React from "react";
-import Profile from "./Profile";
-import {getUserProfile,getStatus, updateStatus} from "../../redux/profile-reducer";
+import {Profile} from "./Profile";
+import {getUsersProfile,getStatus, updateStatus} from "../../redux/profile-reducer";
 import {connect} from 'react-redux';
 import { compose } from "redux";
-import {withRouter,} from "react-router-dom";
-import withAuthNavigate from "./hoc/withAuthNavigate";
-
-
-
-export const withRouter = (Component) =>{
-    let RouterComponent = (props) => {
-            const match = useMatch('/profile/:userId/');
-            return <Component {...props} match={match}/>;
-    }
-    return RouterComponent;
-};
+import {withRouter} from "react-router-dom";
+import {withAuthNavigate} from "./hoc/withAuthNavigate";
 
 
 
@@ -40,8 +30,9 @@ class ProfileContainer extends React.Component{
     return(
         <div>
 <Profile {...this.props}  
+ status={this.props.status}
 profile={this.props.profile}
-status={this.props.status}updateStatus={this.props.updateStatus}/>
+updateStatus={this.props.updateStatus}/>
 </div>
     )
   }
@@ -58,7 +49,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, {getUserProfile,getStatus, updateStatus}),
+    connect(mapStateToProps, {getUsersProfile, getStatus, updateStatus}),
 withAuthNavigate)(ProfileContainer);
 
 

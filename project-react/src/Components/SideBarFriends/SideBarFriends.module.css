@@ -1,0 +1,15 @@
+.sideBar {
+    grid-area: n;
+}
+
+.item a.active {
+    color: rgb(65, 119, 189);
+}
+
+.item a {
+    color: rgb(17, 16, 16);
+}
+
+.content {
+    padding: 20px;
+}
