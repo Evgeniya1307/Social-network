@@ -1,23 +1,12 @@
 import React from 'react'
+import s from './../Dialogs.module.css'
+
 
 const Message = (props) => {
+  const Avatar = <img className={s.img} src={"https://themified.com/friend-finder/images/users/user-7.jpg"} alt="avatar" />
   return (
-    <div className='row mb-4'>
-      <div className='col-md-1 col-2 mr-3'>
-        <div className='users-dialogs__img mr-3'>
-          <img
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ARWKCdw-3CQxQ5nQdTZRJxF2v6SLpWtGPg&usqp=CAU'
-            alt=''
-          />
-        </div>
-      </div>
-      <div className='col-md-5  col-8 users-dialogs__text'>
-        <div className='users-dialogs__text'>
-          {props.message}
-        </div>
-      </div>
-    </div>
+      <div className={s.dialog}>{Avatar}{props.message}</div>
   )
 }
 
-export default Message
+export default Message;

@@ -1,50 +1,48 @@
-import React from 'react'
-import s from './Dialogs.module.css'
-import DialogItem from './DialogItem/DialogItem'
-import Message from './Message/Message'
-import { Navigate } from "react-router-dom";
-import AddMessageForm from './AddMessageForm/AddMessageForm'
-import UserMessage from './Message/UserMessage'
+import React from 'react';
+import s from './Dialogs.module.css';
+import Message from "./Message/Message";
+import {NavLink, Navigate } from "react-router-dom";
+import { AddmessageFormRedux } from "./AddMessageForm";
+import { useSelector } from "react-redux";
 
-const Dialogs = (props) => {
-  const state = props.dialogsPage
-
-  const dialogsElements = state.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} />)
-  const messagesElements = state.messages.map(m => m.type
-    ? <UserMessage avatar={props.avatar} message={m.message} key={m.id} />
-    : <Message message={m.message} key={m.id} />
-  )
-  const newMessageBody = state.newMessageBody
-
-  const addNewMessage = (values) => {
-    props.sendMessage(values.newMessageBody)
-  }
-
-  if (!props.isAuth) return <Redirect to='/login' />
-
+const DialogsItems = (props) => {
+  let path = "/dialogs/" + props.id;
   return (
-    <div className='row'>
-      <div className='col-xl-3 d-xl-block d-none'>
-        <div className='users-dialogs'>
-          {dialogsElements}
-        </div>
+    <div className={s.dialog + "" + s.active}>
+      <NavLink to={path}>{props.name}</NavLink>
+    </div>
+  );
+};
+
+
+export const Dialogs = (props) => {
+  const dialogsMessage = useSelector(
+    (state) => state.dialogsReducer
+  );
+
+
+  let DialogsElements = dialogsMessage.DialogsData.map((d) => (
+    <DialogsItems name={d.name} id={d.id} />
+  ));
+  let messagesElement = dialogsMessage.MessagesData.map((m) => (
+    <Message message={m.message} />
+  ));
+
+ 
+
+  const addNewMessage = (inputData) => {
+    props.addChatContainer(inputData.newMessageBody);
+  };
+  if (!props.isAuth) return <Navigate to={"/Login"} />;
+  return (
+    <div className={s.dialogs}>
+      <div className={s.dialogItems}>
+        <span>{DialogsElements}</span>
       </div>
-      <div className='d-xl-none d-block col-12 mb-4'>
-        <div className='users-dialogs users-dialogs_small'>
-          {dialogsElements}
-        </div>
-      </div>
-      <div className='col-xl-9 col-lg-12'>
-        <div className='user-messages-wrap p-3'>
-          <div className='user-messages '>
-            <div>{messagesElements}</div>
-          </div>
-          <hr />
-          <AddMessageForm onSubmit={addNewMessage} />
-        </div>
+      <div className={s.messages}>
+        <div>{messagesElement}</div>
+        <AddmessageFormRedux onSubmit={addNewMessage} />
       </div>
     </div>
-  )
-}
-
-export default Dialogs;
+  );
+};

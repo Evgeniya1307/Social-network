@@ -6,7 +6,11 @@ import { maxLengthCreator, required } from '../../../utils/validators/validators
 import { Textarea } from '../../common/FormsControls/FormsControls'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-const maxLength10 = maxLengthCreator(10)
+export const maxLength10 = maxLengthCreator(10);
+
+
+
+
 
 const AddNewPostForm = (props) => {
   return (

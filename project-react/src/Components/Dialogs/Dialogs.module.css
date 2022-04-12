@@ -1,58 +1,58 @@
-.users-dialogs {
-    background-color: white;
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding: 10px;
+
 }
 
+.dialogItems {
+    padding: 10px;
+    color: rgb(87, 192, 17);
 
-.users-dialogs__img, .users-dialogs__img img {
-    width: 38px;
-    height: 38px;
-    font-size: 30px;
-    color: #007BFF;
 }
 
+.messages {
+    padding: 10px;
+    color: rgb(151, 14, 37);
 
-.users-dialogs-wrap {
-    display: block;
-    text-decoration: none !important;
 }
 
-.users-dialogs-wrap:hover {
-    background-color: #66b0ff;
+.message {
+    padding: 10px;
+    color: rgb(151, 14, 37);
+
+}
+
+.s active {
+    color: rgb(151, 14, 37);
+}
+
+.img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.button {
+    background-color: deepskyblue; /* Green */
+    border: none;
     color: white;
-
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
-.active .users-dialogs-inner {
-    background-color: #007BFF;
+.inputStyle {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
 }
 
-.user-messages-wrap {
-    min-height: 500px;
-    background-color: white;
-}
-
-.user-messages {
-    height: 350px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-.users-dialogs__text {
-    background-color: #66b0ff;
-    color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.users-dialogs__text_user {
-    background-color: #007BFF;
-    color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.users-dialogs_small {
-    height: 162px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+.inputStyle:focus {
+    background-color: lightblue;
 }
