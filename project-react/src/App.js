@@ -64,4 +64,4 @@ let mapStateToProps = (state) => ({
 export default compose(
     withRouter,
     connect(mapStateToProps, { initializeApp })
-) (App)
+) (App)//Делаем компоненту App (в App.js) классовой. И конектим в нее санку getAuthUserData, которая до этого у нас конектилась и запускалась из пропсов в Header.jsx.
