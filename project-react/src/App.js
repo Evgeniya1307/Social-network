@@ -65,3 +65,4 @@ export default compose(
     withRouter,
     connect(mapStateToProps, { initializeApp })
 ) (App)//Делаем компоненту App (в App.js) классовой. И конектим в нее санку getAuthUserData, которая до этого у нас конектилась и запускалась из пропсов в Header.jsx.
+//в файле App.js создаем mapStateToProps и конектим его вместо null, а также заменяем в mapDispatchToProps getAuthUserData на нашу новую санку initializeApp, импортируя ее из нашего нового редьюсера (напомим, что getAuthUserData теперь вошла внутрь нее):
