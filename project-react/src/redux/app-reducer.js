@@ -31,10 +31,10 @@ export const initializedSuccess = () => ({
  
 
 //thunkCreater:
-export const initializeApp = () => (dispatch) => {
-    let promise = dispatch(getAuthUserData());
+export const initializeApp = () => (dispatch) => {//[2]
+    let promise = dispatch(getAuthUserData());//3
     promise.then(() => {
-        dispatch(initializedSuccess());
+        dispatch(initializedSuccess());//[4] это экшн-криэйтер и возвращаемый экшн;[2] это наша санка;[3] здесь мы и диспатчим санку с другого редьюсера, и объявляем наш промис;[4] здесь после полного завершения диспатча начинается диспатч нашего экшнкриэйтера.
     });
     
 }
